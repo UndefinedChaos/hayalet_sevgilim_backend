@@ -1,2 +1,2 @@
-# Hayalat Sevilim - Back-End
+# Hayalat Sevgilim - Back-End
 "Hayalet Sevgilim" projesinin back-end reposu
