@@ -2,11 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/mux"
 )
 
 type myInfo struct {
@@ -101,8 +102,9 @@ func YourHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	router.Path("/foundStarbucks").HandlerFunc(YourHandler)
+	port := os.Getenv("PORT")
 
-	if err := http.ListenAndServe(":9000", router); err != nil {
+	if err := http.ListenAndServe(":"+port, router); err != nil {
 		log.Fatal(err)
 	}
 
