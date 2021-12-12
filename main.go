@@ -64,6 +64,7 @@ func YourHandler(w http.ResponseWriter, r *http.Request) {
 		var record myInfo
 		json.NewDecoder(res.Body).Decode(&record)
 		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		var response = Response{}
 		if len(record.Arr) > 0 {
 			response.LocationFound = true
