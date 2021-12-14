@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -29,7 +30,12 @@ var router = mux.NewRouter()
 
 func YourHandler(w http.ResponseWriter, r *http.Request) {
 	//Counter check
-	counterFile, err := os.Open("counter.json")
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(dir)
+	counterFile, err := os.Open(dir + "/counter.json")
 	if err != nil {
 		log.Fatal("NewRequest: ", err)
 		return
@@ -57,9 +63,11 @@ func YourHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		defer res.Body.Close()
 		//Counter increasing
+
 		counter.Counter = counter.Counter + 1
 		file, _ := json.Marshal(counter)
-		_ = ioutil.WriteFile("counter.json", file, 0644)
+		_ = ioutil.WriteFile(dir+"/counter.json", file, 0644)
+
 		//
 		var record myInfo
 		json.NewDecoder(res.Body).Decode(&record)
