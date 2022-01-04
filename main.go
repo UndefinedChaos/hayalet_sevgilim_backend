@@ -31,7 +31,7 @@ func YourHandler(w http.ResponseWriter, r *http.Request) {
 	req, _ := http.NewRequest("GET", url, nil)
 
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("Authorization", "fsq3IpOjjwcDiE17Itn4wFCJmSRC3TdlI7JsaiJzdh+kLV8=")
+	req.Header.Add("Authorization", "< YOUR API KEY >")
 	var response = Response{}
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
