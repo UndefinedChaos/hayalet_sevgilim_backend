@@ -1,2 +1,2 @@
 # Hayalat Sevgilim - Back-End
-"Hayalet Sevgilim" projesinin back-end reposu
+API that checks Starbucks location using Foursquare API
